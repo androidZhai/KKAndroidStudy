@@ -11,6 +11,7 @@ import com.kkandroidstudy.R;
 import com.kkandroidstudy.iterface.RetrofitService;
 import com.kkandroidstudy.network.RetrofitClient;
 import com.kkandroidstudy.network.bean.PersonInfo;
+import com.kkandroidstudy.network.bean.PersonInfo2;
 import com.kkandroidstudy.network.bean.RequestInfo;
 import com.orhanobut.logger.Logger;
 
@@ -20,6 +21,10 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class Retrofit2Activity extends AppCompatActivity implements View.OnClickListener {
     private Button btn_getone;
@@ -31,6 +36,8 @@ public class Retrofit2Activity extends AppCompatActivity implements View.OnClick
     private Button btn_cookie;
     private Button btn_sendCookie;
     private Button btn_sendCookie2;
+    private Button btn_rxjavaGetOne;
+    private Button btn_rxjavaGetTwo;
 
 
     @Override
@@ -57,6 +64,10 @@ public class Retrofit2Activity extends AppCompatActivity implements View.OnClick
         btn_sendCookie.setOnClickListener(this);
         btn_sendCookie2 = (Button) findViewById(R.id.btn_sendCookie2);
         btn_sendCookie2.setOnClickListener(this);
+        btn_rxjavaGetOne = (Button) findViewById(R.id.btn_rxjavaGetOne);
+        btn_rxjavaGetOne.setOnClickListener(this);
+        btn_rxjavaGetTwo = (Button) findViewById(R.id.btn_rxjavaGetTwo);
+        btn_rxjavaGetTwo.setOnClickListener(this);
     }
 
     @Override
@@ -89,107 +100,18 @@ public class Retrofit2Activity extends AppCompatActivity implements View.OnClick
             case R.id.btn_sendCookie2:
                 sendCookie2();
                 break;
+            case R.id.btn_rxjavaGetOne:
+                rxjavaGetOne();
+                break;
+            case R.id.btn_rxjavaGetTwo:
+                rxjavaGetTwo();
+                break;
         }
     }
 
-    private void sendCookie2() {
-        //修改baseUrl
-        RetrofitClient.baseUrl = "http://192.168.0.247";
+    private void getOne() {
         RetrofitService service = RetrofitClient.getInstance(this);
-        Call<String> cookieInfo = service.listClass();
-        cookieInfo.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Logger.d(response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private void sendCookie() {
-        //修改baseUrl
-        RetrofitClient.baseUrl = "http://192.168.0.247";
-        RetrofitService service = RetrofitClient.getInstance(this);
-        Map<String, String> map = new HashMap<>();
-        map.put("pageNo", "1");
-        map.put("pageSize", "5");
-        map.put("textbookName", "小汤普森");
-        map.put("tbType", "1");
-        map.put("diffLevel", "1");
-        Call<String> cookieInfo = service.list(map);
-        cookieInfo.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Logger.d(response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
-        });
-    }
-
-    /**
-     * 测试cookie
-     */
-    private void testCookie() {
-        //修改baseUrl
-        RetrofitClient.baseUrl = "http://192.168.0.247";
-        RetrofitService service = RetrofitClient.getInstance(this);
-        Map<String, String> map = new HashMap<>();
-        map.put("userName", "我是老师");
-        map.put("password", "123456");
-        Call<String> cookieInfo = service.getCookieInfo(map);
-        cookieInfo.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Logger.d(response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
-        });
-
-    }
-
-    private void publicCode() {
-        RetrofitService service = RetrofitClient.getInstance(this);
-        Map<String, String> map = new HashMap<>();
-        map.put("app", "idcard.get");
-        map.put("appkey", "10003");
-        map.put("sign", "b59bc3ef6191eb9f747dd4e83c99f2a4");
-        map.put("format", "json");
-        map.put("idcard", "110101199001011114");
-        Call<PersonInfo> personInfo = service.getTwoPersonInfo(map);
-        RetrofitClient.enqueue(personInfo, new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) {
-                Logger.d(response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call call, Throwable t) {
-
-            }
-        });
-    }
-
-    private void postThree() {
-        RetrofitService service = RetrofitClient.getInstance(this);
-        RequestInfo requestInfo = new RequestInfo();
-        requestInfo.setApp("idcard.get");
-        requestInfo.setAppkey("10003");
-        requestInfo.setSign("b59bc3ef6191eb9f747dd4e83c99f2a4");
-        requestInfo.setFormat("json");
-        requestInfo.setIdcard("110101199001011114");
-        Call<PersonInfo> personInfo = service.postThreePersonInfo(requestInfo);
+        Call<PersonInfo> personInfo = service.getOnePersonInfo("idcard.get", "10003", "b59bc3ef6191eb9f747dd4e83c99f2a4", "json", "110101199001011114");
         personInfo.enqueue(new Callback<PersonInfo>() {
             @Override
             public void onResponse(Call<PersonInfo> call, Response<PersonInfo> response) {
@@ -202,6 +124,29 @@ public class Retrofit2Activity extends AppCompatActivity implements View.OnClick
             }
         });
     }
+
+    private void getTwo() {
+        RetrofitService service = RetrofitClient.getInstance(this);
+        Map<String, String> map = new HashMap<>();
+        map.put("app", "idcard.get");
+        map.put("appkey", "10003");
+        map.put("sign", "b59bc3ef6191eb9f747dd4e83c99f2a4");
+        map.put("format", "json");
+        map.put("idcard", "110101199001011114");
+        Call<PersonInfo> personInfo = service.getTwoPersonInfo(map);
+        personInfo.enqueue(new Callback<PersonInfo>() {
+            @Override
+            public void onResponse(Call<PersonInfo> call, Response<PersonInfo> response) {
+                Logger.d(response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<PersonInfo> call, Throwable t) {
+
+            }
+        });
+    }
+
 
     private void postOne() {
         RetrofitService service = RetrofitClient.getInstance(this);
@@ -241,8 +186,30 @@ public class Retrofit2Activity extends AppCompatActivity implements View.OnClick
         });
     }
 
+    private void postThree() {
+        RetrofitService service = RetrofitClient.getInstance(this);
+        RequestInfo requestInfo = new RequestInfo();
+        requestInfo.setApp("idcard.get");
+        requestInfo.setAppkey("10003");
+        requestInfo.setSign("b59bc3ef6191eb9f747dd4e83c99f2a4");
+        requestInfo.setFormat("json");
+        requestInfo.setIdcard("110101199001011114");
+        Call<PersonInfo> personInfo = service.postThreePersonInfo(requestInfo);
+        personInfo.enqueue(new Callback<PersonInfo>() {
+            @Override
+            public void onResponse(Call<PersonInfo> call, Response<PersonInfo> response) {
+                Logger.d(response.body().toString());
+            }
 
-    private void getTwo() {
+            @Override
+            public void onFailure(Call<PersonInfo> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    private void publicCode() {
         RetrofitService service = RetrofitClient.getInstance(this);
         Map<String, String> map = new HashMap<>();
         map.put("app", "idcard.get");
@@ -251,32 +218,107 @@ public class Retrofit2Activity extends AppCompatActivity implements View.OnClick
         map.put("format", "json");
         map.put("idcard", "110101199001011114");
         Call<PersonInfo> personInfo = service.getTwoPersonInfo(map);
-        personInfo.enqueue(new Callback<PersonInfo>() {
+        RetrofitClient.enqueue(personInfo, new Callback() {
             @Override
-            public void onResponse(Call<PersonInfo> call, Response<PersonInfo> response) {
+            public void onResponse(Call call, Response response) {
                 Logger.d(response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<PersonInfo> call, Throwable t) {
+            public void onFailure(Call call, Throwable t) {
 
             }
         });
     }
 
-    private void getOne() {
+    /**
+     * 测试cookie
+     */
+    private void testCookie() {
+        //修改baseUrl
+        RetrofitClient.baseUrl = "http://192.168.0.247";
         RetrofitService service = RetrofitClient.getInstance(this);
-        Call<PersonInfo> personInfo = service.getOnePersonInfo("idcard.get", "10003", "b59bc3ef6191eb9f747dd4e83c99f2a4", "json", "110101199001011114");
-        personInfo.enqueue(new Callback<PersonInfo>() {
+        Map<String, String> map = new HashMap<>();
+        map.put("userName", "我是老师");
+        map.put("password", "123456");
+        Call<String> cookieInfo = service.getCookieInfo(map);
+        cookieInfo.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<PersonInfo> call, Response<PersonInfo> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 Logger.d(response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<PersonInfo> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
+    private void sendCookie() {
+        //修改baseUrl
+        RetrofitClient.baseUrl = "http://192.168.0.247";
+        RetrofitService service = RetrofitClient.getInstance(this);
+        Map<String, String> map = new HashMap<>();
+        map.put("pageNo", "1");
+        map.put("pageSize", "5");
+        map.put("textbookName", "小汤普森");
+        map.put("tbType", "1");
+        map.put("diffLevel", "1");
+        Call<String> cookieInfo = service.list(map);
+        cookieInfo.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Logger.d(response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
 
             }
         });
     }
+
+    private void sendCookie2() {
+        //修改baseUrl
+        RetrofitClient.baseUrl = "http://192.168.0.247";
+        RetrofitService service = RetrofitClient.getInstance(this);
+        Call<String> cookieInfo = service.listClass();
+        cookieInfo.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Logger.d(response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void rxjavaGetOne() {
+        RetrofitService service = RetrofitClient.getInstance(this);
+        Observable<PersonInfo> observalbe = service.rxjavaGetOne("idcard.get", "10003", "b59bc3ef6191eb9f747dd4e83c99f2a4", "json", "110101199001011114");
+        observalbe.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<PersonInfo>() {
+            @Override
+            public void call(PersonInfo personInfo) {
+                Logger.d(personInfo.toString());
+            }
+        });
+    }
+
+    private void rxjavaGetTwo() {
+        RetrofitService service = RetrofitClient.getInstance(this);
+        Observable<PersonInfo2> observalbe = service.rxjavaGetTwo("idcard.get", "10003", "b59bc3ef6191eb9f747dd4e83c99f2a4", "json", "110101199001011114");
+        observalbe.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<PersonInfo2>() {
+            @Override
+            public void call(PersonInfo2 personInfo) {
+                Logger.d(personInfo.toString());
+            }
+        });
+    }
+
 }

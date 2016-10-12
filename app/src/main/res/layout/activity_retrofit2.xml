@@ -59,4 +59,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="发送请求带cookie(示例二)" />
+
+    <Button
+        android:id="@+id/btn_rxjavaGetOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get请求(RxJava)" />
+    <Button
+        android:id="@+id/btn_rxjavaGetTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get请求(RxJava LoganSquare解析javabean)" />
 </LinearLayout>

@@ -3,6 +3,8 @@ package com.kkandroidstudy.network;
 import android.content.Context;
 import android.os.Environment;
 
+import com.bluelinelabs.logansquare.LoganSquare;
+import com.github.aurae.retrofit2.LoganSquareConverterFactory;
 import com.kkandroidstudy.BuildConfig;
 import com.kkandroidstudy.iterface.RetrofitService;
 import com.kkandroidstudy.network.bean.BaseBean;
@@ -27,6 +29,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -62,8 +65,10 @@ public class RetrofitClient {
                 //设置 Debug Log 模式
                 builder.addInterceptor(loggingInterceptor);
             }
-
-            buildCache(builder, true);
+            /**
+             * 添加缓存处理
+             */
+            //buildCache(builder, true);
 
             /**
              *  添加公共参数拦截器
@@ -87,7 +92,7 @@ public class RetrofitClient {
         }
 
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(LoganSquareConverterFactory.create()).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).client(okHttpClient).build();
         RetrofitService service = retrofit.create(RetrofitService.class);
         return service;
     }

@@ -1,6 +1,7 @@
 package com.kkandroidstudy.iterface;
 
 import com.kkandroidstudy.network.bean.PersonInfo;
+import com.kkandroidstudy.network.bean.PersonInfo2;
 import com.kkandroidstudy.network.bean.RequestInfo;
 
 import java.util.Map;
@@ -15,6 +16,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import rx.Observable;
 
 /**
  * Created by shiyan on 2016/10/9.
@@ -58,4 +60,14 @@ public interface RetrofitService {
      */
     @GET("/kuke/kukie/clazz/list4manage")
     Call<String> listClass();
+
+    /**
+     * RxJava
+     */
+
+    @GET("/")
+    Observable<PersonInfo> rxjavaGetOne(@Query("app") String app, @Query("appkey") String appkey, @Query("sign") String sign, @Query("format") String format, @Query("idcard") String idcard);
+
+    @GET("/")
+    Observable<PersonInfo2> rxjavaGetTwo(@Query("app") String app, @Query("appkey") String appkey, @Query("sign") String sign, @Query("format") String format, @Query("idcard") String idcard);
 }

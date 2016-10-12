@@ -10,7 +10,6 @@ import android.widget.ListView;
 
 import com.kkandroidstudy.R;
 import com.kkandroidstudy.adapter.TitleAdapter;
-
 public class MainActivity extends Activity {
     private String[] titles;
     private ListView listView;
@@ -61,6 +60,9 @@ public class MainActivity extends Activity {
                         break;
                     case 9:
                         startActivity(CollapsingToolbarLayoutActivity.class);
+                        break;
+                    case 10:
+                        startActivity(RxJavaTestActivity.class);
                         break;
                 }
             }
