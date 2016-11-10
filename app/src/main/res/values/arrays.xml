@@ -13,6 +13,7 @@
         <item>CollapsingToolbar的基本用法</item>
         <item>RxJava的基本用法</item>
         <item>ViewPager动画</item>
+        <item>JNI测试</item>
     </array>
 
     <array name="tabtitles">

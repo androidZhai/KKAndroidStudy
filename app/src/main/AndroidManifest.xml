@@ -36,7 +36,8 @@
         <activity android:name=".activity.LoggerActivity" />
         <activity android:name=".activity.CollapsingToolbarLayoutActivity" />
         <activity android:name=".activity.RxJavaTestActivity" />
-        <activity android:name=".activity.CustomViewPagerActivity"></activity>
+        <activity android:name=".activity.CustomViewPagerActivity" />
+        <activity android:name=".activity.JNITestActivity"></activity>
     </application>
 
 </manifest>

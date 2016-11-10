@@ -68,6 +68,9 @@ public class MainActivity extends Activity {
                     case 11:
                         startActivity(CustomViewPagerActivity.class);
                         break;
+                    case 12:
+                        startActivity(JNITestActivity.class);
+                        break;
                 }
             }
         });
