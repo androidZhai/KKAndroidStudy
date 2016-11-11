@@ -79,6 +79,9 @@ JNIEXPORT void JNICALL Java_com_kkandroidstudy_ndk_JNI_callbackPrintString
 JNIEXPORT void JNICALL Java_com_kkandroidstudy_ndk_JNI_callbackSayHello
   (JNIEnv *, jobject);
 
+JNIEXPORT void JNICALL Java_com_kkandroidstudy_activity_JNITestActivity_callBackToast
+        (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif

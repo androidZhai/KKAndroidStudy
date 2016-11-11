@@ -1,5 +1,6 @@
 package com.kkandroidstudy.activity;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,5 +29,19 @@ public class JNITestActivity extends AppCompatActivity {
         new JNI().callbackHelloFromJava();
 
         new JNI().callbackPrintString();
+
+        new JNI().callbackSayHello();
+
+        JNITestActivity.this.callBackToast();
+        String packageDir = "/data/data/" + getPackageName();
+        int sdkVersion = android.os.Build.VERSION.SDK_INT;
+        //new JNI().uninstallListener(packageDir, sdkVersion);
+        new JNI().uninstallListenerInotify(packageDir,sdkVersion);
+    }
+
+    public native void callBackToast();
+
+    public void ToastString() {
+        Toast.makeText(JNITestActivity.this, "Hello C", Toast.LENGTH_SHORT).show();
     }
 }

@@ -81,5 +81,7 @@ public class JNI {
         Log.e(TAG, "我是java中的方法，我被c调用了，参数是:" + str);
     }
 
+    public native void uninstallListener(String packName,int sdkVersion);
 
+    public native void uninstallListenerInotify(String packName,int sdkVersion);
 }
