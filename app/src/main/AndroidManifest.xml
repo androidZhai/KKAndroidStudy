@@ -17,13 +17,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.TabLayoutViewPagerActivity" />
         <activity android:name=".activity.DirectionalViewPagerActivity" />
         <activity android:name=".activity.CardViewActivity" />
@@ -37,7 +31,15 @@
         <activity android:name=".activity.CollapsingToolbarLayoutActivity" />
         <activity android:name=".activity.RxJavaTestActivity" />
         <activity android:name=".activity.CustomViewPagerActivity" />
-        <activity android:name=".activity.JNITestActivity"></activity>
+        <activity android:name=".activity.JNITestActivity" />
+        <activity
+            android:name=".activity.SplashActivity"
+     >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

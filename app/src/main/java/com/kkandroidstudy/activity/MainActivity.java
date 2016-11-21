@@ -3,6 +3,7 @@ package com.kkandroidstudy.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -20,6 +21,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        SystemClock.sleep(2000);
         setContentView(R.layout.activity_main);
 
         listView = (ListView) findViewById(R.id.listView);
