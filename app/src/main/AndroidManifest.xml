@@ -32,14 +32,17 @@
         <activity android:name=".activity.RxJavaTestActivity" />
         <activity android:name=".activity.CustomViewPagerActivity" />
         <activity android:name=".activity.JNITestActivity" />
-        <activity
-            android:name=".activity.SplashActivity"
-     >
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.CanvasActivity" />
+        <activity android:name=".activity.PieViewActivity" />
+        <activity android:name=".activity.CheckViewActivity" />
+        <activity android:name=".activity.RotateViewActivity"></activity>
     </application>
 
 </manifest>

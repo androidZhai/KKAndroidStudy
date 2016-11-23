@@ -14,6 +14,10 @@
         <item>RxJava的基本用法</item>
         <item>ViewPager动画</item>
         <item>JNI测试</item>
+        <item>Canvas绘制基本用法</item>
+        <item>饼状图显示</item>
+        <item>CheckView显示</item>
+        <item>抽奖转盘</item>
     </array>
 
     <array name="tabtitles">

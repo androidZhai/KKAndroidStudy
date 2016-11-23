@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -11,6 +12,11 @@ import android.widget.ListView;
 
 import com.kkandroidstudy.R;
 import com.kkandroidstudy.adapter.TitleAdapter;
+import com.kkandroidstudy.bean.UserBean;
+import com.kkandroidstudy.db.DataBaseManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
     private String[] titles;
@@ -72,6 +78,18 @@ public class MainActivity extends Activity {
                         break;
                     case 12:
                         startActivity(JNITestActivity.class);
+                        break;
+                    case 13:
+                        startActivity(CanvasActivity.class);
+                        break;
+                    case 14:
+                        startActivity(PieViewActivity.class);
+                        break;
+                    case 15:
+                        startActivity(CheckViewActivity.class);
+                        break;
+                    case 16:
+                        startActivity(RotateViewActivity.class);
                         break;
                 }
             }
