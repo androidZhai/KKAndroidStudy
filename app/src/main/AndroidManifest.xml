@@ -42,7 +42,8 @@
         <activity android:name=".activity.CanvasActivity" />
         <activity android:name=".activity.PieViewActivity" />
         <activity android:name=".activity.CheckViewActivity" />
-        <activity android:name=".activity.RotateViewActivity"></activity>
+        <activity android:name=".activity.RotateViewActivity" />
+        <activity android:name=".activity.RadarViewActivity"></activity>
     </application>
 
 </manifest>

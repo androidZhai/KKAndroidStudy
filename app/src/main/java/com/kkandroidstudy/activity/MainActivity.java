@@ -91,6 +91,9 @@ public class MainActivity extends Activity {
                     case 16:
                         startActivity(RotateViewActivity.class);
                         break;
+                    case 17:
+                        startActivity(RadarViewActivity.class);
+                        break;
                 }
             }
         });

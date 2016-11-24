@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -102,6 +103,56 @@ public class CanvasView extends View {
         //画线
         canvas.drawLine(0, 0, 400, 400, paint);
 
+        paint.setTextSize(50);
+        //绘制文字
+        canvas.drawText("ABCDEFG", 0, 1000, paint);
 
+        //绘制文字
+        canvas.drawText("ABCDEFG", 1, 3, 0, 1100, paint);
+
+        char[] strs = "ABCDEFG".toCharArray();
+        //绘制文字
+        canvas.drawText(strs, 1, 3, 0, 1200, paint);
+
+        //绘制文字
+        canvas.drawPosText("SLOOP", new float[]{
+                100, 100,    // 第一个字符位置
+                200, 200,    // 第二个字符位置
+                300, 300,    // ...
+                400, 400,
+                500, 500
+        }, paint);
+
+        //绘制path
+        Path path = new Path();
+        paint.setStyle(Paint.Style.STROKE);
+        path.moveTo(300, 1300);
+        path.lineTo(700, 700);
+        path.lineTo(800, 800);
+        canvas.drawPath(path, paint);
+
+        //绘制path
+        canvas.save();
+        canvas.translate(getMeasuredWidth() / 2, getMeasuredHeight() / 2);  // 移动坐标系到屏幕中心
+        canvas.scale(1, -1);                         // <-- 注意 翻转y坐标轴
+
+        path = new Path();
+        path.lineTo(100, 100);
+
+        RectF oval = new RectF(0, 0, 300, 300);
+
+        path.addArc(oval, 0, 270);
+        // path.arcTo(oval,0,270,true);             // <-- 和上面一句作用等价
+        canvas.drawPath(path, paint);
+        canvas.restore();
+
+        //绘制path
+        canvas.translate(getMeasuredWidth() / 2, getMeasuredHeight() / 2);  // 移动坐标系到屏幕中心
+        path = new Path();
+        path.addCircle(0, 0, 100, Path.Direction.CW);
+        path.offset(200, 0);
+        canvas.drawPath(path, paint);
+
+        
     }
 }
