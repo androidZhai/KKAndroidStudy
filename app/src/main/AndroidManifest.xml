@@ -43,7 +43,8 @@
         <activity android:name=".activity.PieViewActivity" />
         <activity android:name=".activity.CheckViewActivity" />
         <activity android:name=".activity.RotateViewActivity" />
-        <activity android:name=".activity.RadarViewActivity"></activity>
+        <activity android:name=".activity.RadarViewActivity" />
+        <activity android:name=".activity.BezierActivity"></activity>
     </application>
 
 </manifest>

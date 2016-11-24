@@ -94,6 +94,9 @@ public class MainActivity extends Activity {
                     case 17:
                         startActivity(RadarViewActivity.class);
                         break;
+                    case 18:
+                        startActivity(BezierActivity.class);
+                        break;
                 }
             }
         });
