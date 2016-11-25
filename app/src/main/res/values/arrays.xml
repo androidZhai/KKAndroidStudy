@@ -20,6 +20,8 @@
         <item>抽奖转盘</item>
         <item>雷达图</item>
         <item>二阶贝塞尔曲线</item>
+        <item>自定义控件1</item>
+        <item>PorterDuffXfermode方式圆形头像</item>
     </array>
 
     <array name="tabtitles">

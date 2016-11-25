@@ -97,6 +97,12 @@ public class MainActivity extends Activity {
                     case 18:
                         startActivity(BezierActivity.class);
                         break;
+                    case 19:
+                        startActivity(MyView1Activity.class);
+                        break;
+                    case 20:
+                        startActivity(CircleImageViewOneActivity.class);
+                        break;
                 }
             }
         });

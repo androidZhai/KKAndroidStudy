@@ -44,7 +44,9 @@
         <activity android:name=".activity.CheckViewActivity" />
         <activity android:name=".activity.RotateViewActivity" />
         <activity android:name=".activity.RadarViewActivity" />
-        <activity android:name=".activity.BezierActivity"></activity>
+        <activity android:name=".activity.BezierActivity" />
+        <activity android:name=".activity.MyView1Activity" />
+        <activity android:name=".activity.CircleImageViewOneActivity"></activity>
     </application>
 
 </manifest>
