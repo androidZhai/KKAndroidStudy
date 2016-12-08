@@ -46,7 +46,10 @@
         <activity android:name=".activity.RadarViewActivity" />
         <activity android:name=".activity.BezierActivity" />
         <activity android:name=".activity.MyView1Activity" />
-        <activity android:name=".activity.CircleImageViewOneActivity"></activity>
+        <activity android:name=".activity.CircleImageViewOneActivity" />
+        <activity android:name=".activity.RegionViewActivity" />
+        <activity android:name=".activity.DrawTextActivity" />
+        <activity android:name=".activity.HttpsActivity"></activity>
     </application>
 
 </manifest>

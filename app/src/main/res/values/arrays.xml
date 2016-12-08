@@ -22,6 +22,9 @@
         <item>二阶贝塞尔曲线</item>
         <item>自定义控件1</item>
         <item>PorterDuffXfermode方式圆形头像</item>
+        <item>圆形点击区域测试</item>
+        <item>drawtext测试</item>
+        <item>访问https网站</item>
     </array>
 
     <array name="tabtitles">

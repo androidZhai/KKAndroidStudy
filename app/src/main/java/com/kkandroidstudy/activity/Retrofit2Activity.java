@@ -239,7 +239,7 @@ public class Retrofit2Activity extends AppCompatActivity implements View.OnClick
         RetrofitClient.baseUrl = "http://192.168.0.247";
         RetrofitService service = RetrofitClient.getInstance(this);
         Map<String, String> map = new HashMap<>();
-        map.put("userName", "我是老师");
+        map.put("userName", "test1");
         map.put("password", "123456");
         Call<String> cookieInfo = service.getCookieInfo(map);
         cookieInfo.enqueue(new Callback<String>() {

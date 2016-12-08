@@ -70,4 +70,11 @@ public interface RetrofitService {
 
     @GET("/")
     Observable<PersonInfo2> rxjavaGetTwo(@Query("app") String app, @Query("appkey") String appkey, @Query("sign") String sign, @Query("format") String format, @Query("idcard") String idcard);
+
+    /**
+     * 访问https
+     * @return
+     */
+    @GET("/otn")
+    Call<String> listMsg();
 }

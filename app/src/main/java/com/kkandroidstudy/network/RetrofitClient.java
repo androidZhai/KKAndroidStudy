@@ -2,12 +2,14 @@ package com.kkandroidstudy.network;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 
 import com.bluelinelabs.logansquare.LoganSquare;
 import com.github.aurae.retrofit2.LoganSquareConverterFactory;
 import com.kkandroidstudy.BuildConfig;
 import com.kkandroidstudy.iterface.RetrofitService;
 import com.kkandroidstudy.network.bean.BaseBean;
+import com.kkandroidstudy.util.HttpsUtil;
 import com.kkandroidstudy.util.NetWorkUtil;
 import com.orhanobut.logger.Logger;
 
@@ -16,6 +18,8 @@ import java.io.IOException;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -87,7 +91,8 @@ public class RetrofitClient {
              */
 //            buildCookie(builder);
 
-
+            builder.sslSocketFactory(HttpsUtil.getInstance(context).getSSLContext().getSocketFactory(), (X509TrustManager) HttpsUtil.getInstance(context).getTrustAllCerts()[0]);
+            builder.hostnameVerifier(HttpsUtil.getInstance(context).getHostnameVerifier());
             okHttpClient = builder.build();
         }
 
@@ -208,5 +213,6 @@ public class RetrofitClient {
             }
         });
     }
+
 
 }

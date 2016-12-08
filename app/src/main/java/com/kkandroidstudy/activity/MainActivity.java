@@ -103,6 +103,15 @@ public class MainActivity extends Activity {
                     case 20:
                         startActivity(CircleImageViewOneActivity.class);
                         break;
+                    case 21:
+                        startActivity(RegionViewActivity.class);
+                        break;
+                    case 22:
+                        startActivity(DrawTextActivity.class);
+                        break;
+                    case 23:
+                        startActivity(HttpsActivity.class);
+                        break;
                 }
             }
         });
