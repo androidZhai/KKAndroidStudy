@@ -49,7 +49,8 @@
         <activity android:name=".activity.CircleImageViewOneActivity" />
         <activity android:name=".activity.RegionViewActivity" />
         <activity android:name=".activity.DrawTextActivity" />
-        <activity android:name=".activity.HttpsActivity"></activity>
+        <activity android:name=".activity.HttpsActivity" />
+        <activity android:name=".activity.SoundPoolActivity" />
     </application>
 
 </manifest>

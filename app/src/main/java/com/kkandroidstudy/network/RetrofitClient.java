@@ -19,6 +19,7 @@ import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Cache;
@@ -90,8 +91,8 @@ public class RetrofitClient {
              * 配置Cookie
              */
 //            buildCookie(builder);
-
-            builder.sslSocketFactory(HttpsUtil.getInstance(context).getSSLContext().getSocketFactory(), (X509TrustManager) HttpsUtil.getInstance(context).getTrustAllCerts()[0]);
+            TrustManager[] trustManagers = HttpsUtil.getInstance(context).getTrustAllCerts("srca.cer");
+            builder.sslSocketFactory(HttpsUtil.getInstance(context).getSSLContext(trustManagers).getSocketFactory(), (X509TrustManager) trustManagers[0]);
             builder.hostnameVerifier(HttpsUtil.getInstance(context).getHostnameVerifier());
             okHttpClient = builder.build();
         }

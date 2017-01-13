@@ -3,6 +3,7 @@ package com.kkandroidstudy.util;
 import android.content.Context;
 import android.util.Log;
 
+
 import org.apache.http.conn.ssl.SSLSocketFactory;
 
 import java.io.BufferedInputStream;
@@ -40,9 +41,9 @@ public class HttpsUtil {
         return httpsUtil;
     }
 
-    public TrustManager[] getTrustAllCerts() {
+    public TrustManager[] getTrustAllCerts(String cerName) {
         try {
-            InputStream certInput = new BufferedInputStream(context.getAssets().open("srca.cer"));
+            InputStream certInput = new BufferedInputStream(context.getAssets().open(cerName));
             //以X.509格式获取证书
             CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
             serverCert = certificateFactory.generateCertificate(certInput);
@@ -93,10 +94,10 @@ public class HttpsUtil {
         return trustAllCerts;
     }
 
-    public SSLContext getSSLContext() {
+    public SSLContext getSSLContext(TrustManager[] trustManagers) {
         try {
             SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, getTrustAllCerts(), null);
+            sslContext.init(null, trustManagers, null);
             return sslContext;
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,15 +112,19 @@ public class HttpsUtil {
                 Log.d("hostname:", hostname);
                 HostnameVerifier verifier = HttpsURLConnection.getDefaultHostnameVerifier();
                 boolean result = verifier.verify(hostname, session);
+//                if (hostname.equals("192.168.0.190")) {
+//                    return true;
+//                }
                 return result;
+//                return false;
             }
         };
         return hostnameVerifier;
     }
 
-    public void setSSLSocketFactory(HttpsURLConnection httpsURLConnection) {
+    public void setSSLSocketFactory(HttpsURLConnection httpsURLConnection, String certName) {
         try {
-            httpsURLConnection.setSSLSocketFactory(getSSLContext().getSocketFactory());
+            httpsURLConnection.setSSLSocketFactory(getSSLContext(getTrustAllCerts(certName)).getSocketFactory());
             //服务器证书域名强制验证
             httpsURLConnection.setHostnameVerifier(SSLSocketFactory.STRICT_HOSTNAME_VERIFIER);
             httpsURLConnection.setHostnameVerifier(getHostnameVerifier());

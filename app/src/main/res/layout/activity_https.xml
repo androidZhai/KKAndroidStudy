@@ -7,20 +7,26 @@
     tools:context="com.kkandroidstudy.activity.HttpsActivity">
 
     <Button
-        android:onClick="sendByHttpUrlConnection"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:onClick="sendByHttpUrlConnection"
         android:text="通过httpurlconnection访问https" />
 
     <Button
-        android:onClick="sendByHttpUrlConnection2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:onClick="sendByHttpUrlConnection2"
         android:text="通过httpurlconnection访问https(第二种)" />
 
     <Button
-        android:onClick="sendByOkHttp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:onClick="sendByHttpUrlConnection3"
+        android:text="通过httpurlconnection访问自签名证书的https" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:onClick="sendByOkHttp"
         android:text="通过okhttp访问https" />
 </LinearLayout>

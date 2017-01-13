@@ -108,7 +108,29 @@ public class HttpsActivity extends AppCompatActivity {
 
                     URL url = new URL(urlTest);
                     HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-                    HttpsUtil.getInstance(HttpsActivity.this).setSSLSocketFactory(httpsURLConnection);
+                    HttpsUtil.getInstance(HttpsActivity.this).setSSLSocketFactory(httpsURLConnection, "srca.cer");
+                    int responseCode = httpsURLConnection.getResponseCode();
+                    Log.d("responseCode:", responseCode + "");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+        }.execute(urlTest);
+
+    }
+
+    public void sendByHttpUrlConnection3(View view) {
+        new AsyncTask<String, Void, Void>() {
+            @Override
+            protected Void doInBackground(String... params) {
+
+                try {
+                    URL url = new URL("https://192.168.0.190:8443");
+                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    HttpsUtil.getInstance(HttpsActivity.this).setSSLSocketFactory(httpsURLConnection, "shiyan_server.cer");
                     int responseCode = httpsURLConnection.getResponseCode();
                     Log.d("responseCode:", responseCode + "");
 

@@ -112,6 +112,9 @@ public class MainActivity extends Activity {
                     case 23:
                         startActivity(HttpsActivity.class);
                         break;
+                    case 24:
+                        startActivity(SoundPoolActivity.class);
+                        break;
                 }
             }
         });

@@ -4,18 +4,18 @@
     "F:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Application.mk"
   ],
   "cleanCommands": [
-    "F:\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dF:/AndroidSpace/KKAndroidStudy/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\build\\intermediates\\ndkBuild\\debug\\lib clean"
+    "F:\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dF:/AndroidSpace/KKAndroidStudy/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\build\\intermediates\\ndkBuild\\debug\\lib clean"
   ],
   "libraries": {
     "Hello-debug-x86": {
-      "buildCommand": "F:\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dF:/AndroidSpace/KKAndroidStudy/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\build\\intermediates\\ndkBuild\\debug\\lib F:/AndroidSpace/KKAndroidStudy/app/build/intermediates/ndkBuild/debug/obj/local/x86/libHello.so",
+      "buildCommand": "F:\\android-sdk-windows\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Application.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-14 NDK_OUT\u003dF:/AndroidSpace/KKAndroidStudy/app/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dF:\\AndroidSpace\\KKAndroidStudy\\app\\build\\intermediates\\ndkBuild\\debug\\lib F:/AndroidSpace/KKAndroidStudy/app/build/intermediates/ndkBuild/debug/obj/local/x86/libHello.so",
       "toolchain": "toolchain-x86",
       "abi": "x86",
       "artifactName": "Hello",
       "files": [
         {
           "src": "F:\\AndroidSpace\\KKAndroidStudy\\app\\src\\main\\jni\\Hello.c",
-          "flags": "\"-gcc-toolchain\" \"F:/android-sdk-windows/ndk-bundle/build//../toolchains/x86-4.9/prebuilt/windows-x86_64\" \"-target\" \"i686-none-linux-android\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-fPIC\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-g\" \"-O2\" \"-DNDEBUG\" \"-IF:/AndroidSpace/KKAndroidStudy/app/src/main/jni\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-mstackrealign\" \"-isystem\" \"F:/android-sdk-windows/ndk-bundle/build//../platforms/android-14/arch-x86/usr/include\""
+          "flags": "\"-gcc-toolchain\" \"F:/android-sdk-windows/ndk-bundle/build//../toolchains/x86-4.9/prebuilt/windows-x86_64\" \"-target\" \"i686-none-linux-android\" \"-ffunction-sections\" \"-funwind-tables\" \"-fstack-protector-strong\" \"-fPIC\" \"-Wno-invalid-command-line-argument\" \"-Wno-unused-command-line-argument\" \"-no-canonical-prefixes\" \"-g\" \"-O0\" \"-UNDEBUG\" \"-fno-limit-debug-info\" \"-IF:/AndroidSpace/KKAndroidStudy/app/src/main/jni\" \"-DANDROID\" \"-Wa,--noexecstack\" \"-Wformat\" \"-Werror\u003dformat-security\" \"-mstackrealign\" \"-isystem\" \"F:/android-sdk-windows/ndk-bundle/build//../platforms/android-14/arch-x86/usr/include\""
         }
       ],
       "output": "F:\\AndroidSpace\\KKAndroidStudy\\app\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\x86\\libHello.so"
